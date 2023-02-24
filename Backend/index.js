@@ -2,6 +2,7 @@ const express = require("express")
 const {connection} = require("./db")
 const {userRouter} = require("./routes/user.routes") 
 const {userModel}  =require("./model/user.model")
+const {productRouter} = require("./routes/product.routes") 
 
 const cors=require("cors")
 require("dotenv").config()
@@ -15,6 +16,7 @@ app.get("/",(req,res) => {
 
 app.use("/users",userRouter)
 
+app.use("/products",productRouter)
 
 app.get("/users",async(req,res) => {
     let query = req.query

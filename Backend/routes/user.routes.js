@@ -27,6 +27,15 @@ userRouter.post("/register", async (req, res) => {
         console.log(err)
     }
 })
+userRouter.get("/data",async(req,res)=>{
+    try{
+        const users=await userModel.find()
+        res.send("all the users data will be send")
+    }catch(err){
+        res.send({"msg":"cannot register","err":err.message})
+    }   
+    
+})
 userRouter.post("/login", async (req, res) => {
     const { email ,pass} = req.body
     try {

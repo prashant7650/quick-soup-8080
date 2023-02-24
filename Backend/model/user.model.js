@@ -1,10 +1,11 @@
 const mongoose=require("mongoose")
 
 const userSchema=mongoose.Schema({
-    name:String,
-    pass:String,
-    email:String,
     
+    name:String,
+    email:String,
+    pass:String
+  
 
 })
 
