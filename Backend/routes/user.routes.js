@@ -12,9 +12,9 @@ userRouter.post("/register", async (req, res) => {
             if (err) {
                 console.log(err);
                 res.send({ "msg": "Something went wring", "error": err.message })
-               
+
             } else {
-                const user = new  userModel({ name, email, pass:hash })
+                const user = new userModel({ name, email, pass: hash })
                 await user.save();
                 res.send({ "msg": " New User register" })
 
@@ -27,25 +27,25 @@ userRouter.post("/register", async (req, res) => {
         console.log(err)
     }
 })
-userRouter.get("/data",async(req,res)=>{
-    try{
-        const users=await userModel.find()
+userRouter.get("/data", async (req, res) => {
+    try {
+        const users = await userModel.find()
         res.send("all the users data will be send")
-    }catch(err){
-        res.send({"msg":"cannot register","err":err.message})
-    }   
-    
+    } catch (err) {
+        res.send({ "msg": "cannot register", "err": err.message })
+    }
+
 })
 userRouter.post("/login", async (req, res) => {
-    const { email ,pass} = req.body
+    const { email, pass } = req.body
     try {
-        const user = await  userModel.find({ email })
+        const user = await userModel.find({ email })
         console.log(user)
         if (user.length > 0) {
             bcrypt.compare(pass, user[0].pass, (err, result) => {
                 if (result) {
 
-                    token = jwt.sign({ userID:user[0]._id}, 'masai');
+                    token = jwt.sign({ userID: user[0]._id }, 'masai');
                     res.send({ "msg": "Login sucess", "token": token })
 
                 } else {
