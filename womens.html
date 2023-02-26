@@ -26,8 +26,22 @@
    </style>
 </head>
 <body>
+  
+    <div>
+        <p>Sort:</p>
+        <select name="" id="sort">
+            <option value="">Featured</option>
+            <option value="lowhigh">Price:Low to High</option>
+            <option value="highlow">Price:High to Low</option>
+            <option value="Newest">Newest</option>
+            <option value="Bestselling">Bestselling</option>
+        
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+        </select>
+       
+    </div>
     <div id="container"></div>
-    
 </body>
 </html>
 <script>
@@ -95,13 +109,13 @@ let prdtdata;
                      console.log(datapresent)
                      if (datapresent == true) {
                          alert("Product Already in Cart");
-                         window.location.href="./index.html"
+                        
          
                      } else {
                          cart.push({ ...el, quantity: 1 });
                          localStorage.setItem("Addtocart", JSON.stringify(cart));
                          alert("Product Added To Cart ✔");
-                        
+                         window.location.href="./index.html"
          
                      }
                  })
